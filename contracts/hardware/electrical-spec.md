@@ -1,8 +1,6 @@
 ---
 文件: 電氣規格 (Electrical Spec / 硬體契約)
-版本: 0.1.0
 狀態: 草稿
-最後更新: 2026-09-07
 ---
 
 # 電氣規格 (Electrical Specification)

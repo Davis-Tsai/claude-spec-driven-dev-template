@@ -1,14 +1,11 @@
 ---
 文件: 工程要求文件 (ERD) — 含資料模型
-版本: 0.1.0
 狀態: 草稿
-最後更新: 2026-09-07
-關聯commit: -
 ---
 
 # 工程要求文件 (ERD) — 結構層
 
-> 把 PRD 的意圖轉成技術結構。這裡的內容應與 `02_contracts/` 完全一致。
+> 把 PRD 的意圖轉成技術結構。這裡的內容應與 `contracts/` 完全一致。
 
 ## 1. 系統架構總覽
 ```mermaid
@@ -25,7 +22,7 @@ flowchart LR
 
 | 介面 | 方向 | 協定 | 資料格式 | 契約檔 |
 |------|------|------|----------|--------|
-| 例：裝置狀態上報 | HW → API | MQTT/HTTP/UART | JSON/binary | `02_contracts/api.openapi.yaml` |
+| 例：裝置狀態上報 | HW → API | MQTT/HTTP/UART | JSON/binary | `contracts/api.openapi.yaml` |
 | 例：韌體指令下發 | API → HW | 同上 | 同上 |  |
 
 ## 3. 資料模型 (ER Diagram)
@@ -49,7 +46,8 @@ erDiagram
         float value
     }
 ```
-> 對應的可執行 schema 在 `02_contracts/data-schema.sql`。
+> ⚠️ 此 ER 圖**僅供導讀/視覺化**。唯一真相 (single source of truth) 是
+> **`contracts/data-schema.sql`**；若圖與 schema 衝突，一律以 schema 為準。生成程式碼時只讀 `contracts/`。
 
 ## 4. 技術選型 (對應 ADR)
 | 項目 | 選擇 | 決策紀錄 |
