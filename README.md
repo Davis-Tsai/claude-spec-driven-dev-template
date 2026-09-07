@@ -64,7 +64,7 @@
 
 ```
 .
-├── charter/         啟動與規劃（範疇、時程、待討論清單）
+├── charter/         啟動與規劃（範疇、時程、設計決策總覽、待討論清單）
 ├── requirements/    需求與設計（PRD、ERD、ADR、UI）
 ├── contracts/       決定性錨點：DB schema、API、硬體規格 ← 唯一真相
 ├── acceptance/      驗收：軟體自動化測試 + 硬體人工量測
@@ -100,4 +100,6 @@
 - **同步防護**：pre-commit hook（`.githooks/`）會在 commit 前跑 `acceptance/run-tests.sh`，擋下「契約變了但程式碼沒跟上」（測試指令待技術棧定案後填入，見 CLAUDE.md §5）。
 - 圖表用 **Mermaid**（純文字、可版控）。
 - 契約用**業界標準格式**（SQL / OpenAPI / CSV），確保無歧義。
+
+> 想了解**這套模板為什麼這樣設計、有哪些選擇與限制**？看 `charter/design-decisions.md`（決策與限制總覽）。
 - 每次「改文件 → 重新生成」都是一個 commit，message 說明改了哪份文件。

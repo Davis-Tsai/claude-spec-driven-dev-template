@@ -76,6 +76,7 @@
 |------|--------|----------------|
 | `charter/scope.md` | 專案範疇、利害關係人、KPI | 專案啟動、範疇變更 |
 | `charter/timeline.md` | 時程（Mermaid 甘特圖） | 排程調整 |
+| `charter/design-decisions.md` | 設計決策與限制總覽（為什麼這樣設計） | 有新的方法論決策或限制時 |
 | `charter/open-questions.md` | 方法論待討論清單 | 有新的方法論決策待定或已定 |
 | `changes/change-log.md` | 變更紀錄（已定案文件的修改歷史） | 每次修改已定案文件時（見 §4） |
 | `requirements/PRD.md` | 產品需求（意圖層，**不寫實作**） | 需求新增／變更 |
