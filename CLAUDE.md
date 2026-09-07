@@ -20,11 +20,12 @@
 1. **檢查是否為 Git 倉庫**：`git rev-parse --is-inside-work-tree`。
    - 若**不是** → 執行 `git init` 並做第一個 commit（本地動作，安全，可直接做）。
 2. **檢查 `.git` 是否從模板繼承而來**：`git remote -v` 與 `git log --oneline`。
-   - 若遠端 origin 指向模板倉庫，或歷史中含模板的 bootstrap commit（`建立規格驅動開發文件骨架`）
+   - 散佈模板的正確做法是**不要複製 `.git`**。但若不小心整包複製了——
+     遠端 origin 指向模板倉庫，或歷史中含模板的 bootstrap commit（`建立規格驅動開發文件骨架`）
      → **停下來警告使用者**：這是模板的歷史/遠端，繼續 commit/push 會污染模板。
-     建議重置：`rm -rf .git && git init`（先向使用者確認）。
-3. **連接 GitHub 屬對外動作**：建立遠端 repo、`git remote add`、`git push`
-   → **一律先徵得使用者同意**，不可自行執行。`git init` 與本地 commit 才可自行進行。
+     **強烈建議重置**：`rm -rf .git && git init`（執行前向使用者確認一次）。
+3. **GitHub 完全交給使用者自行處理**：AI 不建立遠端 repo、不 `git remote add`、不 `git push`，
+   也不主動詢問是否要連 GitHub。只做本地 `git init` 與本地 commit。
 
 > 完成自檢、確認在乾淨的本地 Git 倉庫下，才開始後續開發。
 
