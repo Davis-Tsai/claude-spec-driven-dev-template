@@ -32,6 +32,23 @@
 
 ---
 
+## 0.7 專案型態：軟體？硬體？兩者？
+
+本模板同時涵蓋軟體與硬體。**開始工作前先讀 `charter/scope.md` 的「專案型態」**：
+
+- 型態為 **純軟體** → `contracts/hardware/`、`acceptance/hardware/`、`hardware_build/` 屬**不適用**。
+- 型態為 **純硬體** → `contracts/data-schema.sql`、`contracts/api.openapi.yaml`、`acceptance/software/`、`src/` 屬**不適用**。
+- 型態為 **軟硬整合** → 全部適用。
+
+處理**不適用**的維度時：
+1. 不要強迫使用者填寫那些文件，也不要視為「未完成」。
+2. 把那些文件 frontmatter 的 `狀態:` 標為 `不適用 (N/A)`，並在檔首寫一句說明（例：「本專案不含硬體」）。
+3. 生成/重生程式碼時**略過**不適用的維度。
+
+> `狀態:` 的合法值：`草稿 | 審核中 | 已定案 | 不適用 (N/A)`。
+
+---
+
 ## 1. 鐵則（不可違反）
 
 1. **`contracts/` 是唯一真相 (single source of truth)。** 資料模型／API／硬體規格以 `contracts/` 為準。

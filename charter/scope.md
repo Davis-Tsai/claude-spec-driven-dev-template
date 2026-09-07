@@ -5,6 +5,18 @@
 
 # 專案範疇說明書
 
+## 0. 專案型態 (Project Type)
+> 宣告本專案包含哪些維度。這是「本專案有沒有軟體/硬體」的單一真相來源，
+> AI 會依此決定哪些資料夾需要填寫、哪些標為「不適用」。
+
+- **型態**：軟硬整合   <!-- 三選一：軟硬整合 | 純軟體 | 純硬體 -->
+- 不適用的維度：其相關文件請把 frontmatter 的 `狀態:` 設為 `不適用 (N/A)`，並在檔首寫一句說明（例：「本專案不含硬體」）。
+
+| 維度 | 是否適用 | 對應資料夾 |
+|------|----------|------------|
+| 軟體 | 是 | `contracts/data-schema.sql`、`contracts/api.openapi.yaml`、`acceptance/software/`、`src/` |
+| 硬體 | 是 | `contracts/hardware/`、`acceptance/hardware/`、`hardware_build/` |
+
 ## 1. 專案目標
 <!-- 一句話說明這個專案要達成什麼。 -->
 
