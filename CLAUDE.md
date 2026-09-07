@@ -13,6 +13,23 @@
 
 ---
 
+## 0.5 專案初始化 (Bootstrap) — 動手開發前先做
+
+本模板常以「複製資料夾」方式散佈到新專案。**在這個資料夾第一次開始工作前，先做版控自檢：**
+
+1. **檢查是否為 Git 倉庫**：`git rev-parse --is-inside-work-tree`。
+   - 若**不是** → 執行 `git init` 並做第一個 commit（本地動作，安全，可直接做）。
+2. **檢查 `.git` 是否從模板繼承而來**：`git remote -v` 與 `git log --oneline`。
+   - 若遠端 origin 指向模板倉庫，或歷史中含模板的 bootstrap commit（`建立規格驅動開發文件骨架`）
+     → **停下來警告使用者**：這是模板的歷史/遠端，繼續 commit/push 會污染模板。
+     建議重置：`rm -rf .git && git init`（先向使用者確認）。
+3. **連接 GitHub 屬對外動作**：建立遠端 repo、`git remote add`、`git push`
+   → **一律先徵得使用者同意**，不可自行執行。`git init` 與本地 commit 才可自行進行。
+
+> 完成自檢、確認在乾淨的本地 Git 倉庫下，才開始後續開發。
+
+---
+
 ## 1. 鐵則（不可違反）
 
 1. **`contracts/` 是唯一真相 (single source of truth)。** 資料模型／API／硬體規格以 `contracts/` 為準。
