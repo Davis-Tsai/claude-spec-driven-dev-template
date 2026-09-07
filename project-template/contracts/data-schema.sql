@@ -5,6 +5,8 @@
 --       重建程式碼時，以此檔為準生成 ORM/migration。
 -- =====================================================================
 
+-- ⚠️ 範例可刪：以下 users/devices/telemetry 為格式示範，開始真實專案時請整段替換成你的資料模型。
+
 CREATE TABLE users (
     id          INTEGER PRIMARY KEY,
     email       TEXT NOT NULL UNIQUE,
