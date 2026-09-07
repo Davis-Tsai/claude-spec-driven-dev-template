@@ -18,6 +18,8 @@
 - [x] 軟硬體通用：`scope.md` 專案型態 + 狀態「不適用」，一份模板可做軟硬整合/純軟體/純硬體
 - [x] **Q1 狀態流轉規則**：草稿→審核中(AI可)、審核中→已定案(限使用者)、定案前 AI 跑檢查；新增「修改中」狀態＋變更管理流程（改已定案文件須進修改中→討論→同步更新 PRD/ERD/契約→記錄到 `changes/change-log.md`）。詳見 `CLAUDE.md §4`
 - [x] **Q2 契約凍結與程式碼同步**：文件優先(spec-first)、禁止繞過文件手改 src/(例外須回補)；契約改→更新 acceptance 測試→跑測試才算同步；裝 pre-commit hook（`.githooks/` + `acceptance/run-tests.sh`）自動擋不同步。詳見 `CLAUDE.md §5、鐵則6`
+- [x] **Q3 技術棧選型**：模板保持技術中立；實際專案第一次選定技術棧時各記一則 ADR，並填入 `acceptance/run-tests.sh`。詳見 `CLAUDE.md §3 ADR`
 
-## 待討論：契約改了是否強制重生 `src/`？要不要用 CI 擋「契約變了但沒重生/沒過測試」的 commit
+## 待討論
+（目前無）：契約改了是否強制重生 `src/`？要不要用 CI 擋「契約變了但沒重生/沒過測試」的 commit
 - [ ] **Q3 技術棧選型**：ERD 選型表與 `contracts/` 目前是通用範例，需換成實際專案的技術棧
