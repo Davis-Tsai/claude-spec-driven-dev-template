@@ -64,12 +64,12 @@
 
 ```
 .
-├── charter/         啟動與規劃（範疇、時程、設計決策總覽、待討論清單）
+├── charter/         規劃（範疇、時程、設計決策、待討論、詞彙表、DoD、風險登記）
 ├── requirements/    需求與設計（PRD、ERD、ADR、UI）
 ├── contracts/       決定性錨點：DB schema、API、硬體規格 ← 唯一真相
 ├── acceptance/      驗收：軟體自動化測試 + 硬體人工量測
 ├── changes/         變更紀錄（已定案文件的修改歷史）
-├── ops/             部署與維運（CI/CD、runbook）
+├── ops/             部署與維運（CI/CD、runbook、環境與機密）
 ├── src/             軟體產物（可拋棄後重建）
 └── hardware_build/  硬體產物（PCB/原理圖/韌體，納入版控保存）
 ```
@@ -98,6 +98,8 @@
 - **已定案文件的修改走變更管理**：先進「修改中」→ 與 AI 討論 → 改完同步更新 PRD/ERD/契約，並在 `changes/change-log.md` 留一筆紀錄（見 CLAUDE.md §4）。
 - **文件優先 (spec-first)**：功能改動先改文件再生成程式碼；不繞過文件直接手改 `src/`。
 - **同步防護**：pre-commit hook（`.githooks/`）會在 commit 前跑 `acceptance/run-tests.sh`，擋下「契約變了但程式碼沒跟上」（測試指令待技術棧定案後填入，見 CLAUDE.md §5）。
+  - ⚠️ 若日後把專案 **clone 到別處**，hook 設定不會跟著走，需重跑一次 `git config core.hooksPath .githooks`。
+- **機密不進版控**：金鑰/密碼用環境變數，`.env`/`*.key` 等已被忽略；設定方式見 `ops/environment.md`。
 - 圖表用 **Mermaid**（純文字、可版控）。
 - 契約用**業界標準格式**（SQL / OpenAPI / CSV），確保無歧義。
 

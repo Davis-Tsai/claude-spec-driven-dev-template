@@ -116,3 +116,5 @@
 - 完整操作規則：`CLAUDE.md`
 - 決策細節（架構）：`requirements/decisions/`（ADR）
 - 變更歷史：`changes/change-log.md`
+- 詞彙表：`charter/glossary.md`｜完成的定義：`charter/definition-of-done.md`
+- 風險登記：`charter/risk-register.md`｜環境與機密：`ops/environment.md`

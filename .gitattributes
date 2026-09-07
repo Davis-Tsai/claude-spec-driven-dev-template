@@ -1,0 +1,6 @@
+# 統一換行字元處理，避免跨平台（尤其 Windows CRLF）問題
+* text=auto
+
+# Shell 腳本一律用 LF，否則 Windows 的 CRLF 會讓 pre-commit hook / 測試腳本執行失敗
+*.sh text eol=lf
+.githooks/* text eol=lf

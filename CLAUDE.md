@@ -31,6 +31,8 @@
    讓 §5 的 pre-commit 驗收測試防護生效（hook 已隨模板附在 `.githooks/`）。
    - 若 `.githooks/` 或 `.gitignore` 不存在 → **提醒使用者**：可能複製時漏了隱藏檔（`.` 開頭），
      請回模板把 `.githooks/`、`.gitignore` 補複製過來（見 README Quick Start 複製清單）。
+   - ⚠️ `core.hooksPath` 設定寫在 `.git/config`，**不隨版控帶走**。若本專案日後被 clone 到別的地方，
+     hook 不會自動生效，須在該 clone 重跑一次 `git config core.hooksPath .githooks`。
 
 > 完成自檢、確認在乾淨的本地 Git 倉庫下，才開始後續開發。
 
@@ -67,6 +69,8 @@
 6. **文件優先 (spec-first)。** 任何功能改動**先改文件（PRD/契約），再據此生成或更新程式碼**。
    **禁止**繞過文件、直接手改 `src/` 就當完成；若因臨時需要手改了程式碼，**必須立即回補**對應文件與
    `changes/change-log.md`，否則視為漂移。詳見 §5「契約變更後的程式碼同步」。
+7. **機密絕不進版控。** 金鑰/密碼/憑證一律用環境變數或密鑰服務，不寫死於程式碼、不 commit。
+   詳見 `ops/environment.md`。
 
 ---
 
@@ -78,6 +82,10 @@
 | `charter/timeline.md` | 時程（Mermaid 甘特圖） | 排程調整 |
 | `charter/design-decisions.md` | 設計決策與限制總覽（為什麼這樣設計） | 有新的方法論決策或限制時 |
 | `charter/open-questions.md` | 方法論待討論清單 | 有新的方法論決策待定或已定 |
+| `charter/glossary.md` | 詞彙表（統一術語） | 出現新的重要名詞 |
+| `charter/definition-of-done.md` | 完成的定義 (DoD) | 回報「完成」前對照 |
+| `charter/risk-register.md` | 風險登記表 | 發現/更新風險 |
+| `ops/environment.md` | 環境變數與機密管理 | 設定環境、處理 secrets |
 | `changes/change-log.md` | 變更紀錄（已定案文件的修改歷史） | 每次修改已定案文件時（見 §4） |
 | `requirements/PRD.md` | 產品需求（意圖層，**不寫實作**） | 需求新增／變更 |
 | `requirements/ERD.md` | 技術結構、軟硬體邊界、追溯表 | PRD 變更後同步 |
@@ -187,6 +195,14 @@
 - message 說明改了哪份文件／為何重生（例：`feat(contracts): 新增裝置設定 API` 或 `chore: 依契約重生 src/`）。
 - 不需要在文件內寫版本號——`git log` 就是版本史。
 - commit 前 pre-commit hook 會自動跑 acceptance 測試（見 §0.5、§5）；請勿隨意用 `--no-verify` 跳過。
+
+---
+
+## 6.5 輔助文件的使用
+- **詞彙表**：命名與用語以 `charter/glossary.md` 為準；遇到新的重要名詞就補一列。
+- **完成的定義**：回報「完成」前，對照 `charter/definition-of-done.md` 逐項確認。
+- **風險**：發現風險或其變化，記到 `charter/risk-register.md`。
+- **環境/機密**：需要設定或金鑰時看 `ops/environment.md`；絕不 commit 機密（鐵則 7）。
 
 ---
 

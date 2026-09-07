@@ -19,6 +19,14 @@ venv/
 *.kicad_prl
 fp-info-cache
 
+# 機密（絕不進版控）——見 ops/environment.md
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets/
+
 # 作業系統/編輯器
 .DS_Store
 Thumbs.db
