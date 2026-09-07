@@ -1,0 +1,6 @@
+Ref,Part Number,Description,Value,Package,Qty,Manufacturer,Notes
+U1,,主控 MCU,,,1,,
+U2,,感測器,,,1,,
+R1,,電阻,10k,0603,1,,上拉
+C1,,電容,100nF,0603,1,,去耦
+J1,,電源連接器,,,1,,5V 輸入

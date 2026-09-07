@@ -1,0 +1,27 @@
+# 產物（可由文件重新生成，視需要決定是否納管）
+# 若希望產物也進版控，將下面兩行註解掉
+# src/**
+# hardware_build/**
+
+# 建置與相依
+node_modules/
+dist/
+build/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 韌體/EDA 暫存
+*.o
+*.elf
+*.hex.bak
+*-backups/
+*.kicad_prl
+fp-info-cache
+
+# 作業系統/編輯器
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,39 @@
+# =====================================================================
+# API 契約 (OpenAPI 3.1)
+# 版本: 0.1.0  狀態: 草稿  最後更新: 2026-09-07
+# 說明: 此檔為「決定性錨點」。前後端與韌體的 API 溝通必須符合此契約。
+#       重建時以此檔為準生成 API 骨架與 client。
+# =====================================================================
+openapi: 3.1.0
+info:
+  title: 專案 API
+  version: 0.1.0
+servers:
+  - url: https://api.example.com/v1
+paths:
+  /devices/{serial_no}/telemetry:
+    post:
+      summary: 裝置上報遙測資料 (HW → API)
+      parameters:
+        - name: serial_no
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TelemetryIn'
+      responses:
+        '201': { description: 已接收 }
+        '400': { description: 格式錯誤 }
+        '404': { description: 裝置不存在 }
+components:
+  schemas:
+    TelemetryIn:
+      type: object
+      required: [ts, value]
+      properties:
+        ts:    { type: string, format: date-time }
+        value: { type: number }
