@@ -80,6 +80,8 @@
 - **frontmatter 只保留 Git 看不出來的資訊**：目前僅 `狀態: 草稿 | 審核中 | 已定案 | 修改中 | 不適用 (N/A)`。
 - **模板同時涵蓋軟體與硬體**：純軟體或純硬體專案，把用不到的維度文件狀態標為「不適用」即可（見 `charter/scope.md` 專案型態）。
 - **已定案文件的修改走變更管理**：先進「修改中」→ 與 AI 討論 → 改完同步更新 PRD/ERD/契約，並在 `changes/change-log.md` 留一筆紀錄（見 CLAUDE.md §4）。
+- **文件優先 (spec-first)**：功能改動先改文件再生成程式碼；不繞過文件直接手改 `src/`。
+- **同步防護**：pre-commit hook（`.githooks/`）會在 commit 前跑 `acceptance/run-tests.sh`，擋下「契約變了但程式碼沒跟上」（測試指令待技術棧定案後填入，見 CLAUDE.md §5）。
 - 圖表用 **Mermaid**（純文字、可版控）。
 - 契約用**業界標準格式**（SQL / OpenAPI / CSV），確保無歧義。
 - 每次「改文件 → 重新生成」都是一個 commit，message 說明改了哪份文件。

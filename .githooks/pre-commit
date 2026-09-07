@@ -1,0 +1,22 @@
+#!/bin/sh
+# =====================================================================
+# pre-commit — 規格驅動倉庫的同步防護 (Q2)
+# 目的：commit 前自動跑驗收測試，擋下「契約/文件改了但程式碼沒跟上」。
+# 測試指令集中在 acceptance/run-tests.sh；尚未設定時放行並提醒。
+# 安裝方式：git config core.hooksPath .githooks（Bootstrap 已處理，見 CLAUDE.md §0.5）
+# =====================================================================
+RUNNER="acceptance/run-tests.sh"
+
+if [ -f "$RUNNER" ]; then
+  sh "$RUNNER"
+  if [ "$?" -ne 0 ]; then
+    echo ""
+    echo "❌ acceptance 測試未通過，commit 已中止。"
+    echo "   請修正程式碼直到符合契約，或先同步更新文件/測試。"
+    echo "   (若確需略過：git commit --no-verify，但這代表文件與程式碼可能不同步)"
+    exit 1
+  fi
+else
+  echo "⚠️  找不到 $RUNNER，略過驗收測試（尚未設定測試指令）。"
+fi
+exit 0

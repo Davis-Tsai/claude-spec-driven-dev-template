@@ -27,6 +27,8 @@
      **強烈建議重置**：`rm -rf .git && git init`（執行前向使用者確認一次）。
 3. **GitHub 完全交給使用者自行處理**：AI 不建立遠端 repo、不 `git remote add`、不 `git push`，
    也不主動詢問是否要連 GitHub。只做本地 `git init` 與本地 commit。
+4. **安裝同步防護 hook**：`git init` 後執行 `git config core.hooksPath .githooks`，
+   讓 §5 的 pre-commit 驗收測試防護生效（hook 已隨模板附在 `.githooks/`）。
 
 > 完成自檢、確認在乾淨的本地 Git 倉庫下，才開始後續開發。
 
@@ -60,6 +62,9 @@
 4. **版本交給 Git。** 不要在文件裡手寫版本號或日期。frontmatter 只保留 `狀態:`。
 5. **需求要可追溯。** 每條需求有 ID（FR-xxx / NFR-xxx），對應驗收 ID（AC-xxx / HW-AC-xxx）。
    改動需求時，必須同步維護 `requirements/ERD.md` 的追溯表與 `acceptance/` 的測試。
+6. **文件優先 (spec-first)。** 任何功能改動**先改文件（PRD/契約），再據此生成或更新程式碼**。
+   **禁止**繞過文件、直接手改 `src/` 就當完成；若因臨時需要手改了程式碼，**必須立即回補**對應文件與
+   `changes/change-log.md`，否則視為漂移。詳見 §5「契約變更後的程式碼同步」。
 
 ---
 
@@ -159,6 +164,14 @@
 > 「請只讀取 requirements/、contracts/、acceptance/，重新生成 src/ 與韌體，並通過 acceptance/ 內所有測試。」
 收到此類指令時，**先刪除或忽略 `src/` 舊內容的影響**，純粹依文件重生。
 
+### 契約變更後的程式碼同步 (Q2)
+- **文件優先**：功能改動一律先改文件，再更新程式碼（§1 鐵則 6）。不允許程式碼偷跑。
+- **更新策略**：小改用**局部更新**（只改受影響的程式碼）；累積較多或懷疑漂移時，做一次**全量重生**驗證。
+- **同步判定靠測試**：契約改 → 先更新 `acceptance/` 對應測試 → 跑測試，全過才算「程式碼已同步」。
+- **自動防護**：本倉庫裝了 pre-commit hook（見 §0.5 安裝），commit 前自動跑 `acceptance/run-tests.sh`；
+  沒過就擋下 commit，從機制上防止「契約變了但程式碼沒跟上」。測試指令集中維護在 `acceptance/run-tests.sh`。
+- 每次同步結果記到 `changes/change-log.md` 的「是否需重生程式碼」欄。
+
 ---
 
 ## 6. Commit 慣例
@@ -166,6 +179,7 @@
 - 每次「改文件」或「重新生成」都獨立 commit。
 - message 說明改了哪份文件／為何重生（例：`feat(contracts): 新增裝置設定 API` 或 `chore: 依契約重生 src/`）。
 - 不需要在文件內寫版本號——`git log` 就是版本史。
+- commit 前 pre-commit hook 會自動跑 acceptance 測試（見 §0.5、§5）；請勿隨意用 `--no-verify` 跳過。
 
 ---
 
