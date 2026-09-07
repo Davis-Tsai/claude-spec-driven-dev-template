@@ -29,6 +29,8 @@
    也不主動詢問是否要連 GitHub。只做本地 `git init` 與本地 commit。
 4. **安裝同步防護 hook**：`git init` 後執行 `git config core.hooksPath .githooks`，
    讓 §5 的 pre-commit 驗收測試防護生效（hook 已隨模板附在 `.githooks/`）。
+   - 若 `.githooks/` 或 `.gitignore` 不存在 → **提醒使用者**：可能複製時漏了隱藏檔（`.` 開頭），
+     請回模板把 `.githooks/`、`.gitignore` 補複製過來（見 README Quick Start 複製清單）。
 
 > 完成自檢、確認在乾淨的本地 Git 倉庫下，才開始後續開發。
 
