@@ -15,22 +15,22 @@
 
 ## 0.5 專案初始化 (Bootstrap) — 動手開發前先做
 
-本模板常以「複製資料夾」方式散佈到新專案。
+本模板以 **GitHub 範本倉庫**散佈（`Use this template` / Download ZIP / `git clone`），也可直接複製資料夾。
 **觸發時機：在這個專案第一次收到任何開發指令時，先完成以下版控自檢，再動手做事。**
 
 1. **檢查是否為 Git 倉庫**：`git rev-parse --is-inside-work-tree`。
    - 若**不是** → 執行 `git init` 並做第一個 commit（本地動作，安全，可直接做）。
-2. **檢查 `.git` 是否從模板繼承而來**：`git remote -v` 與 `git log --oneline`。
-   - 散佈模板的正確做法是**不要複製 `.git`**。但若不小心整包複製了——
-     遠端 origin 指向模板倉庫，或歷史中含模板的 bootstrap commit（`建立規格驅動開發文件骨架`）
-     → **停下來警告使用者**：這是模板的歷史/遠端，繼續 commit/push 會污染模板。
+2. **檢查 `.git` 是否來自範本本身**：`git remote -v` 與 `git log --oneline`。
+   - 用 **Use this template** 或 **Download ZIP** 取得者：無範本建置歷史，正常，跳過本步。
+   - 但若直接 `git clone` 本範本 repo 來用（remote 指向範本倉庫，或歷史含範本 bootstrap commit `建立規格驅動開發文件骨架`）
+     → **停下來警告使用者**：這是範本的歷史/遠端，繼續 commit/push 會污染範本。
      **強烈建議重置**：`rm -rf .git && git init`（執行前向使用者確認一次）。
 3. **GitHub 完全交給使用者自行處理**：AI 不建立遠端 repo、不 `git remote add`、不 `git push`，
    也不主動詢問是否要連 GitHub。只做本地 `git init` 與本地 commit。
 4. **安裝同步防護 hook**：`git init` 後執行 `git config core.hooksPath .githooks`，
    讓 §5 的 pre-commit 驗收測試防護生效（hook 已隨模板附在 `.githooks/`）。
-   - 若 `.githooks/` 或 `.gitignore` 不存在 → **提醒使用者**：可能複製時漏了隱藏檔（`.` 開頭），
-     請回模板把 `.githooks/`、`.gitignore` 補複製過來（見 README Quick Start 複製清單）。
+   - 若 `.githooks/` 或 `.gitignore` 不存在 → **提醒使用者**：可能取得時漏了隱藏檔（`.` 開頭），
+     請重新以 Use this template / ZIP 取得完整內容（見 README Quick Start）。
    - ⚠️ `core.hooksPath` 設定寫在 `.git/config`，**不隨版控帶走**。若本專案日後被 clone 到別的地方，
      hook 不會自動生效，須在該 clone 重跑一次 `git config core.hooksPath .githooks`。
 
