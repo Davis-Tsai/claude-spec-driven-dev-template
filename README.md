@@ -96,4 +96,6 @@
 - 契約用**業界標準格式**（SQL / OpenAPI / CSV），確保無歧義。
 
 > 想了解**這套模板為什麼這樣設計、有哪些選擇與限制**？看 `charter/design-decisions.md`（決策與限制總覽）。
+>
+> 維護／改善本模板、以及既有專案如何吸收改善：看 `MAINTAINING.md`。
 - 每次「改文件 → 重新生成」都是一個 commit，message 說明改了哪份文件。
