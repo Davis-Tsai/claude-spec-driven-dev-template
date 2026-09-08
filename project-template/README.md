@@ -86,6 +86,7 @@
 - **同步防護**：pre-commit hook（`.githooks/`）會在 commit 前跑 `acceptance/run-tests.sh`，擋下「契約變了但程式碼沒跟上」（測試指令待技術棧定案後填入，見 CLAUDE.md §5）。
   - ⚠️ 若日後把專案 **clone 到別處**，hook 設定不會跟著走，需重跑一次 `git config core.hooksPath .githooks`。
 - **機密不進版控**：金鑰/密碼用環境變數，`.env`/`*.key` 等已被忽略；設定方式見 `ops/environment.md`。
+- **逆向規格化**：若規格是從既有專案逆向萃取而來，文件預設「審核中」，須標來源、建覆蓋率矩陣、經獨立複核後由人核可才定案（見 `CLAUDE.md §4.5`、`charter/reverse-spec-provenance.md`）。
 - 圖表用 **Mermaid**（純文字、可版控）。
 - 契約用**業界標準格式**（SQL / OpenAPI / CSV），確保無歧義。
 
