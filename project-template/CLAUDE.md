@@ -85,6 +85,7 @@
 | `charter/glossary.md` | 詞彙表（統一術語） | 出現新的重要名詞 |
 | `charter/definition-of-done.md` | 完成的定義 (DoD) | 回報「完成」前對照 |
 | `charter/risk-register.md` | 風險登記表 | 發現/更新風險 |
+| `charter/reverse-spec-checklist.md` | 逆向規格化操作步驟 (SOP) | 文件化既有專案時（見 §4.5） |
 | `charter/reverse-spec-provenance.md` | 逆向規格化溯源記錄（僅逆向專案需要） | 文件化既有專案時（見 §4.5） |
 | `ops/environment.md` | 環境變數與機密管理 | 設定環境、處理 secrets |
 | `changes/change-log.md` | 變更紀錄（已定案文件的修改歷史） | 每次修改已定案文件時（見 §4） |
@@ -177,7 +178,11 @@
 3. **覆蓋率矩陣**：在 `charter/reverse-spec-provenance.md` 建立「原始碼項目 → 文件位置」對應表，露出缺口以證明完整性。
 4. **獨立對抗式複核**：以獨立一輪（另一個 agent 或人）反向查「無臆造（文件有、碼無）、無遺漏（碼有、文件無）」，差異記入 provenance。
 
-全程記錄於 `charter/reverse-spec-provenance.md`。最強驗證是「往返再生測試」（只靠文件重生程式碼並跑原驗收），成本高、非必需，有能力時再做。
+> **真相優先序**：as-built 程式碼 > 註解/檔頭 > 舊設計文件；三者衝突時以**實際執行的程式碼**為準
+> （常見坑：註解/檔頭描述的是被撤銷的舊設計）。
+
+**執行時逐步依 `charter/reverse-spec-checklist.md`（操作步驟）。** 全程記錄於 `charter/reverse-spec-provenance.md`。
+最強驗證是「往返再生測試」（只靠文件重生程式碼並跑原驗收），成本高、非必需，有能力時再做。
 
 ---
 
