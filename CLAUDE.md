@@ -93,6 +93,8 @@
 | `requirements/ERD.md` | 技術結構、軟硬體邊界、追溯表 | PRD 變更後同步 |
 | `requirements/decisions/` | ADR 架構決策紀錄 | 每個重大技術決策 |
 | `requirements/ui/` | UI/UX 原型與流程 | 介面設計 |
+| `references/README.md` | 參考資料規範（界線、Drive 分工、給 AI 讀取方式） | 大多不動 |
+| `references/registry.md` | 參考資料登錄表（Base + 連結列表，指向 G drive；**要填的表**） | 有新的參考素材時 |
 | `contracts/data-schema.sql` | DB 結構契約 | 資料模型定案／變更 |
 | `contracts/api.openapi.yaml` | API 契約 | 介面定案／變更 |
 | `contracts/hardware/` | 腳位、時序、電氣、BOM | 硬體規格定案／變更 |
@@ -229,6 +231,7 @@
 - **完成的定義**：回報「完成」前，對照 `charter/definition-of-done.md` 逐項確認。
 - **風險**：發現風險或其變化，記到 `charter/risk-register.md`。
 - **環境/機密**：需要設定或金鑰時看 `ops/environment.md`；絕不 commit 機密（鐵則 7）。
+- **參考資料**：`references/` 是輸入素材（指向 G drive，非真相）。**`references/registry.md` 的登錄表由你（Claude）自動維護** —— 讀取參考目錄或使用者提供檔案後，自動新增/更新對應 REF 列；Base（路徑）由使用者設定。你可讀該 Base 下 `references\` 目錄樹全部內容作分析參考。詳見 `references/README.md`。
 
 ---
 
