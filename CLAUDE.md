@@ -34,6 +34,9 @@
    - ⚠️ `core.hooksPath` 設定寫在 `.git/config`，**不隨版控帶走**。若本專案日後被 clone 到別的地方，
      hook 不會自動生效，須在該 clone 重跑一次 `git config core.hooksPath .githooks`。
 
+5. **提醒設定參考資料 Base**：若本專案會用到參考素材（datasheet／標準／廠商文件…），
+   提醒使用者到 `references/registry.md` 設定 **Base 路徑**（指向 G drive 的參考目錄）；見 `references/README.md`。
+
 > 完成自檢、確認在乾淨的本地 Git 倉庫下，才開始後續開發。
 
 ---
