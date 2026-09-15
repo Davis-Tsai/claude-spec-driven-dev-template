@@ -36,6 +36,7 @@
 
 5. **提醒設定參考資料 Base**：若本專案會用到參考素材（datasheet／標準／廠商文件…），
    提醒使用者到 `references/registry.md` 設定 **Base 路徑**（指向 G drive 的參考目錄）；見 `references/README.md`。
+   - 使用者也可**直接把資料夾的 `G:\` 路徑貼給你**，由你代填/更新 registry 的 Base，不必手動編輯。
 
 > 完成自檢、確認在乾淨的本地 Git 倉庫下，才開始後續開發。
 
@@ -234,7 +235,8 @@
 - **完成的定義**：回報「完成」前，對照 `charter/definition-of-done.md` 逐項確認。
 - **風險**：發現風險或其變化，記到 `charter/risk-register.md`。
 - **環境/機密**：需要設定或金鑰時看 `ops/environment.md`；絕不 commit 機密（鐵則 7）。
-- **參考資料**：`references/` 是輸入素材（指向 G drive，非真相）。**`references/registry.md` 的登錄表由你（Claude）自動維護** —— 讀取參考目錄或使用者提供檔案後，自動新增/更新對應 REF 列；Base（路徑）由使用者設定。你可讀該 Base 下 `references\` 目錄樹全部內容作分析參考。詳見 `references/README.md`。
+- **參考資料**：`references/` 是輸入素材（指向 G drive，非真相）。**`references/registry.md` 的登錄表由你（Claude）自動維護** —— 讀取參考目錄或使用者提供檔案後，自動新增/更新對應 REF 列；Base（路徑）由使用者設定。你可讀該 Base 下 `references\` 目錄樹全部內容作分析參考。
+  - **逐行判斷 Base**：含角括號 `<...>` 佔位符＝未設定；具體路徑（無 `<>`）＝已設定，**直接去讀**。只要有任一 Base 是具體路徑就讀它，**別因其他 Base 行仍是佔位符、或範例 REF 列還在，就誤判整個 references 未設定**。首次真實登錄時清掉未用的 BASE 佔位行與範例列。詳見 `references/README.md`。
 
 ---
 
