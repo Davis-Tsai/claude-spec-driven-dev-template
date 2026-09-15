@@ -8,21 +8,53 @@
 
 ## 新專案怎麼開始（Quick Start）
 
-這是一個 **GitHub 範本倉庫 (template repository)**。取得乾淨專案有三種方式：
+這是一個 **GitHub 範本倉庫 (template repository)**。從 GitHub 取得的最終目的通常是**雲端備份 + 團隊協作**，
+所以下面把每種取得方式、以及「如何確實接上雲端」一次講清楚。
 
-- **A. Use this template（最推薦）**：在本 repo 頁面按 **Use this template → Create a new repository**，
-  GitHub 會產生一個**全新、無建置歷史**的 repo，`git clone` 下來即可，天生不含範本歷史。
-- **B. Download ZIP**：下載 → 解壓 → 資料夾即為你的新專案（無 `.git`）。
-- **C. Clone 後重置**：`git clone` 本 repo → 刪掉 `.git` 重新 `git init`（避免帶到範本建置歷史）。
+### 步驟一：把檔案取得到本地（三選一）
 
-接著：
-1. 在你的新專案資料夾開啟 Claude Code。
-2. **第一句話直接說：**
+**A. Use this template（最推薦）**
+1. 在本 repo 頁面按 **Use this template → Create a new repository**，在你的帳號建立新 repo。
+2. 把它 clone 到本地：
+   ```
+   git clone https://github.com/<你的帳號>/<新repo名>.git
+   cd <新repo名>
+   ```
+   - 特點：新 repo 已在你的 GitHub 上（**雲端備份/協作一開始就有**）、歷史乾淨、不含範本建置歷史。
 
-   > 請依 CLAUDE.md 初始化這個專案
+**B. Download ZIP**
+1. 在本 repo 頁面按 **Code → Download ZIP**，解壓到你要的位置。
+   - 特點：純資料夾、無 `.git`、還沒上雲端（要備份/協作見步驟三）。
 
-   Claude Code 會做版控自檢（沒有 Git 就 `git init`＋第一個 commit、安裝 pre-commit hook），再開始開發。
-   GitHub 遠端由你自行處理，AI 不會代為連接或 push。
+**C. Clone 後重置**
+```
+git clone https://github.com/Davis-Tsai/claude-spec-driven-dev-template.git <新專案名>
+cd <新專案名>
+rm -rf .git        # ⚠️ 一定要做：清掉範本的歷史與遠端，否則 commit/push 會污染範本
+```
+   - 特點：用 git 方式拿檔，但**必須重置**才乾淨；重置後同 B（純本地、還沒上雲端）。
+
+> **怎麼選**：要一開始就有雲端備份/協作 → **A**；只想先本地/離線試 → **B**；習慣用 git clone → **C（記得重置）**。
+
+### 步驟二：初始化（開 Claude Code）
+在你的新專案資料夾開啟 Claude Code，第一句話：
+
+> 請依 CLAUDE.md 初始化這個專案
+
+Claude Code 會做版控自檢（沒有 Git 就 `git init`＋第一個 commit、安裝 pre-commit hook）、提醒你設定 references Base，再開始開發。
+
+### 步驟三：接上雲端備份 / 協作
+- **A**：已完成（新 repo 就在你的 GitHub）。
+- **B / C**：本地先有 commit 後，自己建 GitHub repo 並推送即可（推完就與 A 相同）：
+  ```
+  # 先在 GitHub 建一個空的新 repo，然後：
+  git remote add origin https://github.com/<你的帳號>/<新repo名>.git
+  git branch -M main
+  git push -u origin main
+  ```
+  （有 GitHub CLI 的話一次完成：`gh repo create <新repo名> --private --source=. --remote=origin --push`）
+
+> 註：連 GitHub 這步**由你自己做**；依 `CLAUDE.md §0.5`，AI 不會自作主張建遠端或 push。
 
 ---
 
