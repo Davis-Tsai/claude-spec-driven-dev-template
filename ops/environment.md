@@ -19,10 +19,11 @@
 | 例：TI SimpleLink SDK | vX | ti.com/...（需登入手動下載） | 使用者 | 檢查安裝目錄 | 未安裝 |
 | 例：arm-none-eabi-gcc | vX | apt / brew / 官方 | 使用者 或 AI(經同意) | `arm-none-eabi-gcc --version` | 未安裝 |
 
-### 安裝政策（AI 不擅自安裝軟體）
-- AI 預設**只提供**：官方下載連結、安裝步驟、驗證指令，由使用者執行（大型廠商 SDK 常需登入授權，AI 無法下載）。
-- 可用套件管理器（apt/brew/pip/choco…）安裝、且**使用者明確同意**時，AI 才可代跑安裝指令；仍須逐一經權限確認，**不靜默安裝**。
-- AI 跑過驗證指令（version）確認後，才把狀態改 `已驗證`。
+### 安裝政策（哪些 Claude 可代裝、哪些需你手動）
+- **可代裝（經你同意）**：凡**套件管理器 / CLI 可裝**者（pip / npm / winget / choco / scoop / brew / apt / cargo…）與專案相依（requirements.txt / package.json…）—— **直接說「幫我裝」，Claude 會提議指令、你點同意、Claude 裝好並跑驗證**，你不必自己查怎麼裝。
+- **需你手動**：廠商 SDK / IDE（需登入 / GUI / 手動下載，如 TI SimpleLink、STM32CubeIDE…）、硬體驅動 —— Claude 只提供官方連結 + 步驟 + 驗證指令。
+- 不確定屬哪類時，Claude 會**先判斷（查套件管理器有沒有、跑 `--version`）並告訴你**，不盲猜。
+- 每個安裝指令**仍逐次經你同意**，Claude **不靜默安裝**；跑過驗證（version）後才把狀態改 `已驗證`。
 - **絕不在工具缺席時回報「已建置/測試通過」** —— 須明講「跳過：工具鏈未安裝」。
 
 ## 2. 環境變數
