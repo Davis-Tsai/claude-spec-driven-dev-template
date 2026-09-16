@@ -19,6 +19,9 @@
 | 例：TI SimpleLink SDK | vX | ti.com/...（需登入手動下載） | 使用者 | 檢查安裝目錄 | 未安裝 |
 | 例：arm-none-eabi-gcc | vX | apt / brew / 官方 | 使用者 或 AI(經同意) | `arm-none-eabi-gcc --version` | 未安裝 |
 
+> **集中安裝里程碑**：技術棧 ADR 全定案後，一次輸出「完整安裝順序清單（含版本）」，別讓使用者邊做邊發現缺東西。
+> **pinned vs as-installed 對帳**：同時記「定案版本」與「實裝版本」；兩者不同時驗證相容並註記（例：定案 TI-CGT 16.9.4、實裝隨 IDE 到 16.9.6，已驗證相容）。
+
 ### 安裝政策（哪些 Claude 可代裝、哪些需你手動）
 - **可代裝（經你同意）**：凡**套件管理器 / CLI 可裝**者（pip / npm / winget / choco / scoop / brew / apt / cargo…）與專案相依（requirements.txt / package.json…）—— **直接說「幫我裝」，Claude 會提議指令、你點同意、Claude 裝好並跑驗證**，你不必自己查怎麼裝。
 - **需你手動**：廠商 SDK / IDE（需登入 / GUI / 手動下載，如 TI SimpleLink、STM32CubeIDE…）、硬體驅動 —— Claude 只提供官方連結 + 步驟 + 驗證指令。
